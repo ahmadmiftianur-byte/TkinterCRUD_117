@@ -28,3 +28,15 @@ def simpan_nilai(nama, biologi, fisika, inggris, prediksi):
         (nama_siswa, biologi, fisika, inggris, prediksi_fakultas)
         VALUES (?, ?, ?, ?, ?)""",
         (nama, biologi, fisika, inggris, prediksi))
+
+def get_students():
+    return run_query("""SELECT nama_siswa, biologi, fisika,
+        inggris, prediksi_fakultas FROM nilai_siswa""")
+
+
+def delete_student(nama, biologi, fisika, inggris, prediksi):
+    run_query("""DELETE FROM nilai_siswa
+        WHERE nama_siswa = ? AND biologi = ?
+        AND fisika = ? AND inggris = ?
+        AND prediksi_fakultas = ?""",
+        (nama, biologi, fisika, inggris, prediksi))
