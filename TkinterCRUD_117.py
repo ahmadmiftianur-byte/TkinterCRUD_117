@@ -127,3 +127,46 @@ for col in cols:
 tree.grid(row=7, column=0, columnspan=3, padx=10, pady=10)
 
 tree.bind("<<TreeviewSelect>>", on_select)
+
+
+# Tombol submit
+tombol = tk.Button(
+    root,
+    text="Submit Nilai",
+    command=submit_nilai
+)
+tombol.grid(row=5, column=0, pady=10)
+
+
+# Fungsi hapus data
+def hapus_data():
+    selected_item = tree.selection()
+
+    if not selected_item:
+        messagebox.showwarning("Peringatan", "Pilih data yang ingin dihapus!")
+        return
+
+    data = tree.item(selected_item[0], "values")
+
+    delete_student(
+        data[0],
+        data[1],
+        data[2],
+        data[3],
+        data[4]
+    )
+
+    refresh()
+
+    hasil.config(text="Hasil Prediksi: -")
+
+    messagebox.showinfo("Berhasil", "Data berhasil dihapus!")
+
+
+# Tombol hapus
+tombol_hapus = tk.Button(
+    root,
+    text="Hapus Data",
+    command=hapus_data
+)
+tombol_hapus.grid(row=5, column=1, pady=10)
