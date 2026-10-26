@@ -98,3 +98,32 @@ def submit_nilai():
         e.delete(0, tk.END)
 
     refresh()
+
+
+def refresh():
+    tree.delete(*tree.get_children())
+
+    for row in get_students():
+        tree.insert("", tk.END, values=row)
+
+
+def on_select(event):
+    selected_item = tree.selection()
+
+    if selected_item:
+        data = tree.item(selected_item[0], "values")
+        hasil.config(text="Prediksi Fakultas: " + data[4])
+
+
+# Membuat tabel
+cols = ("nama_siswa", "biologi", "fisika",
+        "inggris", "prediksi_fakultas")
+
+tree = ttk.Treeview(root, columns=cols, show="headings")
+
+for col in cols:
+    tree.heading(col, text=col.title())
+
+tree.grid(row=7, column=0, columnspan=3, padx=10, pady=10)
+
+tree.bind("<<TreeviewSelect>>", on_select)
