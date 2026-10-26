@@ -12,3 +12,13 @@ def run_query(sql, params=()):
             return conn.execute(sql, params).fetchall()
     finally:
         conn.close()
+
+def init_db():
+    run_query("""CREATE TABLE IF NOT EXISTS nilai_siswa (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nama_siswa TEXT,
+        biologi INTEGER,
+        fisika INTEGER,
+        inggris INTEGER,
+        prediksi_fakultas TEXT
+    )""")
