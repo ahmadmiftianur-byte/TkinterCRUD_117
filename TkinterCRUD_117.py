@@ -40,3 +40,18 @@ def delete_student(nama, biologi, fisika, inggris, prediksi):
         AND fisika = ? AND inggris = ?
         AND prediksi_fakultas = ?""",
         (nama, biologi, fisika, inggris, prediksi))
+
+init_db()
+
+root = tk.Tk()
+root.title("Aplikasi Prediksi Fakultas")
+root.geometry("700x550")
+
+
+# Membuat input
+entries = {}
+
+for i, field in enumerate(["Nama Siswa", "Biologi", "Fisika", "Inggris"]):
+    tk.Label(root, text=field).grid(row=i, column=0, pady=5)
+    entries[field] = tk.Entry(root, width=25)
+    entries[field].grid(row=i, column=1, pady=5)
