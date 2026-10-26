@@ -170,3 +170,12 @@ tombol_hapus = tk.Button(
     command=hapus_data
 )
 tombol_hapus.grid(row=5, column=1, pady=10)
+
+
+# Menampilkan hasil
+hasil = tk.Label(root, text="Hasil Prediksi: -")
+hasil.grid(row=6, column=0, columnspan=2)
+
+
+refresh()
+root.mainloop()
