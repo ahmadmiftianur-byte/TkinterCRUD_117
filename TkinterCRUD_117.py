@@ -22,3 +22,9 @@ def init_db():
         inggris INTEGER,
         prediksi_fakultas TEXT
     )""")
+
+def simpan_nilai(nama, biologi, fisika, inggris, prediksi):
+    run_query("""INSERT INTO nilai_siswa
+        (nama_siswa, biologi, fisika, inggris, prediksi_fakultas)
+        VALUES (?, ?, ?, ?, ?)""",
+        (nama, biologi, fisika, inggris, prediksi))
